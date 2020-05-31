@@ -1,0 +1,29 @@
+#form {
+  transition: margin 0.5s;
+}
+#main {
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+}
+
+#form {
+  width: 272px;
+  margin-right: -272px;
+}
+#form.show {
+  margin-right: 0;
+}
+
+.back-red {
+  background-color: #e82d62;
+}
+.back-green {
+  background-color: #14c2a3;
+}
+.text-moon {
+  color: #e0f7f3;
+}
+.text-cheese {
+  color: #faf6e1;
+}
