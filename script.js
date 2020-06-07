@@ -116,7 +116,3 @@ function deleteContact(id) {
     }
   });
 }
-
-function updateStart(id) {
-  console.log(id);
-}
