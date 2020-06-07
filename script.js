@@ -43,7 +43,7 @@ function renderTable() {
         <td>${contact.details}</td>
         <td>
           <button onclick="deleteContact(${contact.id})" class="btn back-red text-moon"> <i class='fa fa-trash'></i></button>
-          <button onclick="updateStart(${contact.id})" class="btn back-green text-moon"> <i class='fa fa-edit'></i></button>
+          <button onclick="edit(${contact.id})" class="btn back-green text-moon"> <i class='fa fa-edit'></i></button>
         </td>`
     );
     tbody.append(tr);
@@ -61,13 +61,14 @@ function showForm() {
 // When form submit
 function hideForm() {
   $("#form").removeClass("show");
+  $("#Form").trigger("reset");
 }
 
 // Form submit listener
 $("#contact_form").on("submit", (event) => {
   event.preventDefault();
   // Get contactList from localstorge
-  const contactList = JSON.parse(localStorage.getItem("contactList"));
+  let contactList = JSON.parse(localStorage.getItem("contactList"));
   // Create new contact data obj. from form by FormData constructor function
   const newContact = new FormData(event.target);
   // Create real contact object
@@ -75,23 +76,21 @@ $("#contact_form").on("submit", (event) => {
   for (item of newContact.entries()) {
     new_contact[item[0]] = item[1];
   }
+
   // Check if the id existed
-  if (contactList.find((item) => item.id == new_contact.id)) {
-    Swal.fire({
-      title: "Id Existed",
-      text: "Your chosen id is already existed choose another id!",
-      icon: "warning",
-      confirmButtonColor: "#14C2A3",
-      confirmButtonText: "Ok",
-    });
+  const contact = contactList.find((item) => item.id == new_contact.id);
+  if (contact) {
+    contactList = contactList.map((item) => (item.id == new_contact.id ? new_contact : item));
   } else {
     // Push it into cotact list and updated list into localstorage
     contactList.push(new_contact);
-    localStorage.setItem("contactList", JSON.stringify(contactList));
-    // Update view of html
-    hideForm();
-    renderTable();
   }
+
+  localStorage.setItem("contactList", JSON.stringify(contactList));
+
+  // Update view of html
+  hideForm();
+  renderTable();
 });
 
 function deleteContact(id) {
@@ -115,4 +114,18 @@ function deleteContact(id) {
       });
     }
   });
+}
+
+function edit(id) {
+  const contactList = JSON.parse(localStorage.getItem("contactList"));
+  const contact = contactList.find((item) => item.id == id);
+  showForm();
+  $("#id_id").text(contact.id);
+  $("#id_name").text(contact.name);
+  $("#id_last_name").text(contact.lastName);
+  $("#id_phone").text(contact.phone);
+  $("#id_email").text(contact.email);
+  $("#id_address").text(contact.address);
+  $("#id_birthday").text(contact.birthday);
+  $("#id_details").text(contact.details);
 }
