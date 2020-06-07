@@ -33,14 +33,14 @@ function renderTable() {
   // Inject contactList into td, tr tags and apped every one into our tbody
   contactList.map((contact) => {
     const tr = $("<tr></tr>").append(
-      `<td>${contact.id}</td>
-        <td>${contact.name}</td>
-        <td>${contact.lastName}</td>
-        <td>${contact.phone}</td>
-        <td>${contact.email}</td>
-        <td>${contact.address}</td>
-        <td>${contact.birthday}</td>
-        <td>${contact.details}</td>
+      `<td class="text-light">${contact.id}</td>
+        <td class="text-light">${contact.name}</td>
+        <td class="text-light">${contact.lastName}</td>
+        <td class="text-light">${contact.phone}</td>
+        <td class="text-light">${contact.email}</td>
+        <td class="text-light">${contact.address}</td>
+        <td class="text-light">${contact.birthday}</td>
+        <td class="text-light">${contact.details}</td>
         <td>
           <button onclick="deleteContact(${contact.id})" class="btn back-red text-moon"> <i class='fa fa-trash'></i></button>
           <button onclick="edit(${contact.id})" class="btn back-green text-moon"> <i class='fa fa-edit'></i></button>
