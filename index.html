@@ -25,16 +25,12 @@
                 <th>last name</th>
                 <th>phone</th>
                 <th>email</th>
-                <th>address</th>
-                <th>birthday</th>
-                <th>details</th>
                 <th>action</th>
               </tr>
             </thead>
           </table>
           <div class="buttons">
             <button class="btn text-cheese back-green" onclick="showForm()">Add</button>
-            <button class="btn text-cheese back-red" onclick="hideForm()">Cancell</button>
           </div>
         </div>
         <div id="form" class="text-moon">
@@ -64,23 +60,9 @@
               <input type="email" name="email" class="form-control" id="id_email" placeholder="Enter Email" />
             </div>
 
-            <div class="form-group">
-              <label for="id_address">address</label>
-              <textarea name="address" class="form-control" id="id_address" placeholder="Enter Address"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label for="id_birthday">birthday</label>
-              <input type="datetime-local" name="birthday" class="form-control" id="id_birthday" placeholder="Enter birthday" />
-            </div>
-
-            <div class="form-group">
-              <label for="id_details">details: </label>
-              <input type="text" name="details" class="form-control" id="id_details" placeholder="Enter details" />
-            </div>
-
             <button type="submit" class="btn text-cheese back-green">Submit</button>
             <button type="reset" class="btn text-cheese back-red">Clear</button>
+            <button type="button" class="btn text-cheese back-red" onclick="hideForm()">Cancell</button>
           </form>
         </div>
       </div>
@@ -88,7 +70,7 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="./script.js"></script>

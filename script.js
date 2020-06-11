@@ -1,3 +1,4 @@
+$("#form").hide();
 renderTable();
 function removeContact(id) {
   let contactList = JSON.parse(localStorage.getItem("contactList"));
@@ -38,9 +39,6 @@ function renderTable() {
         <td class="text-light">${contact.lastName}</td>
         <td class="text-light">${contact.phone}</td>
         <td class="text-light">${contact.email}</td>
-        <td class="text-light">${contact.address}</td>
-        <td class="text-light">${contact.birthday}</td>
-        <td class="text-light">${contact.details}</td>
         <td>
           <button onclick="deleteContact(${contact.id})" class="btn back-red text-moon"> <i class='fa fa-trash'></i></button>
           <button onclick="edit(${contact.id})" class="btn back-green text-moon"> <i class='fa fa-edit'></i></button>
@@ -55,13 +53,13 @@ function renderTable() {
 
 // When click on Add button
 function showForm() {
-  $("#form").addClass("show");
+  $("#form").fadeIn();
 }
 
 // When form submit
 function hideForm() {
-  $("#form").removeClass("show");
-  $("#Form").trigger("reset");
+  $("#form").fadeOut();
+  $(":input").not(":button, :submit, :reset, :hidden, :checkbox, :radio").val("");
 }
 
 // Form submit listener
@@ -120,12 +118,9 @@ function edit(id) {
   const contactList = JSON.parse(localStorage.getItem("contactList"));
   const contact = contactList.find((item) => item.id == id);
   showForm();
-  $("#id_id").text(contact.id);
-  $("#id_name").text(contact.name);
-  $("#id_last_name").text(contact.lastName);
-  $("#id_phone").text(contact.phone);
-  $("#id_email").text(contact.email);
-  $("#id_address").text(contact.address);
-  $("#id_birthday").text(contact.birthday);
-  $("#id_details").text(contact.details);
+  $("#id_id").val(contact.id);
+  $("#id_name").val(contact.name);
+  $("#id_last_name").val(contact.lastName);
+  $("#id_phone").val(contact.phone);
+  $("#id_email").val(contact.email);
 }
